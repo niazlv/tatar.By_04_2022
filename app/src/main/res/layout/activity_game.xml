@@ -763,10 +763,10 @@
         <ImageView
 
             android:layout_weight="1"
-            android:id="@+id/back"
+            android:id="@+id/hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_back" />
+            app:srcCompat="@drawable/ic_hint" />
 
     </LinearLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>
