@@ -16,11 +16,730 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_holder" />
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_field" />
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_field" />
+
+        <ScrollView
+            android:layout_marginVertical="44dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_marginBottom="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im1"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t1"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im2"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t2"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im3"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t3"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginBottom="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im4"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t4"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im5"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t5"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im6"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t6"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginBottom="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im7"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t7"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im8"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t8"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im9"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t9"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginBottom="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im10"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t10"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im11"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t11"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im12"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t12"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginBottom="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im13"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t13"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im14"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t14"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im15"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t15"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginBottom="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im16"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t16"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im17"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t17"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im18"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t18"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginBottom="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im19"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t19"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im20"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t20"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im21"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t21"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginBottom="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im22"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t22"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im23"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t23"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:id="@+id/im24"
+                            android:layout_weight="1"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/ic_merge">
+                        </ImageView>
+                        <TextView
+                            android:id="@+id/t24"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Это слово"
+                            android:layout_marginTop="8dp"
+                            android:textColor="#473305"
+                            android:fontFamily="@font/pixy">
+                        </TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_weight="1"
