@@ -3,8 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/ic_dialog.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_pen.xml" value="0.2085" />
+        <entry key="app/src/main/res/layout/activity_alert_get_new_word.xml" value="0.2680409250695721" />
         <entry key="app/src/main/res/layout/activity_create_module.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/activity_game.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/activity_level.xml" value="0.26930694580078124" />
