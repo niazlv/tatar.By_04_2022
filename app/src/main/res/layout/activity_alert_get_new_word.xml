@@ -166,7 +166,6 @@
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginStart="24dp"
-      android:layout_marginTop="40dp"
       android:layout_marginEnd="24dp"
       android:layout_marginBottom="24dp"
       android:fontFamily="@font/pixy"
@@ -177,6 +176,5 @@
       app:layout_constraintBottom_toBottomOf="@+id/imageView3"
       app:layout_constraintEnd_toEndOf="@+id/imageView3"
       app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="@+id/imageView3"
-      app:layout_constraintTop_toBottomOf="@+id/translation_example" />
+      app:layout_constraintStart_toStartOf="@+id/imageView3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

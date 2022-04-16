@@ -24,14 +24,6 @@ public class TestActivity extends AppCompatActivity {
         mAns3 = findViewById(R.id.ans3);
         mAns4 = findViewById(R.id.ans4);
 
-        String correct = "";
-
-        Random random = new Random();
-        Integer x = random.nextInt(4);
-
-        if (x==0){
-
-        }
 
     }
 }
