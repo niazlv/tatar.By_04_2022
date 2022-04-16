@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".TestActivity">
+
+        </activity>
+        <activity
             android:name=".DictionaryActivity"
             android:exported="false" />
         <activity
