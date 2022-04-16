@@ -34,7 +34,6 @@
         <entry key="app/src/main/res/drawable/ic_teacher.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_window_back.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_workbook.xml" value="0.2085" />
-        <entry key="app/src/main/res/drawable/progress.xml" value="0.2085" />
         <entry key="app/src/main/res/layout/activity_alert_get_new_word.xml" value="0.2680409250695721" />
         <entry key="app/src/main/res/layout/activity_create_module.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/activity_dictionary.xml" value="0.26051177978515627" />
@@ -42,7 +41,6 @@
         <entry key="app/src/main/res/layout/activity_level.xml" value="0.26930694580078124" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_teacher.xml" value="0.25052083333333336" />
-        <entry key="app/src/main/res/layout/activity_test.xml" value="0.2451202392578125" />
         <entry key="app/src/main/res/layout/alert_item_info.xml" value="0.29349365234375" />
         <entry key="app/src/main/res/layout/dict_layout.xml" value="0.20865987141927084" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.209" />
