@@ -1,11 +1,14 @@
 package com.example.sberteacher;
 
+import static com.example.sberteacher.DictionaryActivity.mArrayDict;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -34,12 +37,13 @@ public class GameActivity extends AppCompatActivity {
                     continue;
                 limg = obj.getJSONObject(String.valueOf(x)).getString("img");
                 ltat = obj.getJSONObject(String.valueOf(x)).getString("tatar");
+                ldef = obj.getJSONObject(String.valueOf(x)).getString("def");
                 break;
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return new String[]{lrus, ltat, limg};
+        return new String[]{lrus, ltat, limg, ldef};
     }
     String[] findInJSON(String str_data,String find){
         return findInJSON(str_data,find,false);
@@ -51,7 +55,7 @@ public class GameActivity extends AppCompatActivity {
     Boolean isPlace = false;
     Integer place = 3;
     ArrayList<String> merge = new ArrayList<String>();
-    String tat, rus, img,lrus,limg, ltat;
+    String tat, rus, img,lrus,limg, ltat, def, ldef;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -83,6 +87,7 @@ public class GameActivity extends AppCompatActivity {
                 tat = obj.getJSONObject(String.valueOf(i)).getString("tatar");
                 rus = obj.getJSONObject(String.valueOf(i)).getString("rus");
                 img = obj.getJSONObject(String.valueOf(i)).getString("img");
+                def = obj.getJSONObject(String.valueOf(i)).getString("def");
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -95,6 +100,12 @@ public class GameActivity extends AppCompatActivity {
             if (i <= 3){
                 im.setImageDrawable(ContextCompat.getDrawable(this,this.getResources().getIdentifier(img, "drawable", this.getPackageName())));
                 tv.setText(tat);
+
+                ArrayList<String> mList = new ArrayList<String>();
+                mList.add(rus);
+                mList.add(def);
+                mArrayDict.add(mList);
+
             } else{
                 im.setVisibility(View.INVISIBLE);
                 tv.setText("");
@@ -103,6 +114,7 @@ public class GameActivity extends AppCompatActivity {
             final String new_tat = tat;
             final String new_rus = rus;
             final ImageView new_img = im;
+            final String new_def = def;
 
             final ImageView mHolder1 = findViewById(R.id.holder1);
             final ImageView mHolder2 = findViewById(R.id.holder2);
@@ -166,6 +178,7 @@ public class GameActivity extends AppCompatActivity {
                             mergeList[j][0][1] = "0";
 
                             //create alert
+
                             AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
                             View mView = (ConstraintLayout) getLayoutInflater().inflate(R.layout.activity_alert_get_new_word, null);
                             TextView mRus = mView.findViewById(R.id.rus);
@@ -183,8 +196,15 @@ public class GameActivity extends AppCompatActivity {
                             lrus = res[0];
                             ltat = res[1];
                             limg = res[2];
+                            ldef = res[3];
                             mRus.setText(lrus);
                             mTat.setText(ltat);
+
+                            ArrayList<String> mList = new ArrayList<String>();
+                            mList.add(ltat);
+                            mList.add(ldef);
+                            mArrayDict.add(mList);
+
                             mImage.setImageDrawable(ContextCompat.getDrawable(GameActivity.this,getResources().getIdentifier(limg, "drawable", getPackageName())));
 
                             //alert show
@@ -240,6 +260,12 @@ public class GameActivity extends AppCompatActivity {
                     View mView = (ConstraintLayout) getLayoutInflater().inflate(R.layout.alert_item_info, null);
                     ImageView mImage = mView.findViewById(R.id.mImage);
                     ImageView mDictionary = mView.findViewById(R.id.dictionary);
+                    mDictionary.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(new Intent(GameActivity.this, DictionaryActivity.class));
+                        }
+                    });
                     ImageView mCloseAlert = mView.findViewById(R.id.close_alert);
                     TextView mRus = mView.findViewById(R.id.text_rus);
                     TextView mTat = mView.findViewById(R.id.text_tat);
