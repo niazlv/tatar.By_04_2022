@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pixy"
                 android:text="Уровни"
-                android:textColor="#473305"
+                android:textColor="#1A1C30"
                 android:textSize="64sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
