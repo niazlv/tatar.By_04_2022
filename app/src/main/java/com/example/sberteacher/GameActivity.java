@@ -131,7 +131,6 @@ public class GameActivity extends AppCompatActivity {
             im.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-
                     //create alert dialog
                     AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
                     View mView = (ConstraintLayout) getLayoutInflater().inflate(R.layout.alert_item_info, null);
