@@ -137,6 +137,23 @@ public class GameActivity extends AppCompatActivity {
                         mergeTemp = new ArrayList<String>(Arrays.asList(mergeList[j][0]));
                         Collections.sort(mergeTemp);
                         if (mergeTemp.equals(merge)) {
+
+                            //create alert
+                            AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+                            View mView = (ConstraintLayout) getLayoutInflater().inflate(R.layout.activity_alert_get_new_word, null);
+                            TextView mRus = mView.findViewById(R.id.tat);
+                            TextView mTat = mView.findViewById(R.id.rus);
+                            TextView mExample = mView.findViewById(R.id.example);
+                            TextView mTranslation = mView.findViewById(R.id.translation_example);
+                            TextView mAdditional = mView.findViewById(R.id.text_additional);
+
+                            //писать здесь
+
+                            builder.setView(mView);
+                            AlertDialog dialog = builder.create();
+                            dialog.getWindow().setBackgroundDrawableResource(R.color.translucent_black);
+                            dialog.show();
+
                             Toast.makeText(GameActivity.this, "Рецепт создан!", Toast.LENGTH_SHORT).show();
                             for(int x = 1;x<24;x++) {
                                 try {
