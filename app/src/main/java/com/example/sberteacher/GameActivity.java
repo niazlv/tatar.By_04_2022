@@ -8,10 +8,6 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import android.annotation.SuppressLint;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.VectorDrawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -29,8 +25,7 @@ import org.w3c.dom.Text;
 public class GameActivity extends AppCompatActivity {
     ImageView im;
     TextView tv;
-    String st, tat, rus, img;
-    String iimg;
+    String tat, rus, img;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -108,9 +103,6 @@ public class GameActivity extends AppCompatActivity {
                 }
             });
         }
-
-
-
 
     }
 }
