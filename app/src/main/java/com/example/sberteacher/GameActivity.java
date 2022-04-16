@@ -51,6 +51,24 @@ public class GameActivity extends AppCompatActivity {
         return findInJSON(str_data,find,false);
     }
 
+    public String Assets2Str(String filename)
+    {
+        //reading json from assets
+        byte[] buffer = null;
+        InputStream is;
+        try {
+            is = getAssets().open(filename);
+            int size = is.available();
+            buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new String(buffer);
+    }
+
     ImageView im;
     TextView tv;
     Integer count = 0;
@@ -64,22 +82,9 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        startActivity(new Intent(GameActivity.this, TestActivity.class));
 
-        //reading json from assets
-        String text = "level1.json";
-        byte[] buffer = null;
-        InputStream is;
-        try {
-            is = getAssets().open(text);
-            int size = is.available();
-            buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        final String str_data = new String(buffer);
+        final String str_data = Assets2Str("level1.json");
 
         final String[][][] mergeList ={ { {"бумага", "бумага"}, {"книга"}, {"читать"}} , {{"бумага", "карандаш"}, {"тетрадь"}, {"писать"}}, {{"книга", "тетрадь"}, {"рюкзак"}, {"большой"}}, {{"человек", "рюкзак"}, {"школьник"}, {"умный"}}, {{"школьник", "школьник"}, {"учитель"}, {"учить"}}, {{"книга", "книга", "книга"}, {"библиотека"}, {"маленькая"}}, {{"книга", "ученик", "тетрадь"}, {"пятерка"}, {"получать"}}, {{"учитель", "школьник", "школьник"}, {"школа"}, {"большая"}}  };
 
@@ -290,13 +295,6 @@ public class GameActivity extends AppCompatActivity {
                     TextView mRus = mView.findViewById(R.id.text_rus);
                     TextView mTat = mView.findViewById(R.id.text_tat);
 
-                    mCloseAlert.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-
-                        }
-                    });
-
                     //find tat name in json and get any names and resources to correct give request
                     String[] res = findInJSON(str_data,temptv.getText().toString(),true);
                     mTat.setText(res[1]);
@@ -308,6 +306,14 @@ public class GameActivity extends AppCompatActivity {
                     AlertDialog dialog = builder.create();
                     dialog.getWindow().setBackgroundDrawableResource(R.color.translucent_black);
                     dialog.show();
+
+                    mCloseAlert.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+
                     //need to exit and enable tacktic responce
                     return true;
                 }
