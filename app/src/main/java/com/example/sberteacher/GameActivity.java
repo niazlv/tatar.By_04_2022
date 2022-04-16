@@ -74,6 +74,7 @@ public class GameActivity extends AppCompatActivity {
                     TextView mTat = view.findViewById(R.id.text_tat);
                     ImageView mImage = view.findViewById(R.id.mImage);
 
+                    mImage.setImageDrawable(im.getDrawable());
 
                     builder.setView(view);
                     AlertDialog dialog
