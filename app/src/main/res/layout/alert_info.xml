@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/layout_for_alert"
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource">
+
+
+  <ImageView
+      android:id="@+id/imageView3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_alert_new_back"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <TextView
+      android:id="@+id/textView4"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginVertical="16dp"
+      android:fontFamily="@font/pixy"
+      android:gravity="center"
+      android:text="правила"
+      android:textColor="@color/colorPrimaryDark"
+      android:textSize="40sp"
+      app:layout_constraintEnd_toEndOf="@+id/imageView3"
+      app:layout_constraintStart_toStartOf="@+id/imageView3"
+      app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+  <ImageView
+      android:id="@+id/imageView11"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="32dp"
+      app:layout_constraintStart_toStartOf="@+id/imageView3"
+      app:layout_constraintTop_toBottomOf="@+id/textView4"
+      app:srcCompat="@drawable/ic_school" />
+
+  <TextView
+      android:id="@+id/textView8"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="32dp"
+      android:fontFamily="@font/pixy"
+      android:textSize="16dp"
+      android:textColor="#000000"
+      android:text="Цель уровня - собрать предмет ШКОЛА"
+      app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+      app:layout_constraintEnd_toEndOf="@+id/imageView3"
+      app:layout_constraintStart_toEndOf="@+id/imageView11"
+      app:layout_constraintTop_toTopOf="@+id/imageView11" />
+
+  <TextView
+      android:id="@+id/textView9"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="32dp"
+      android:fontFamily="@font/pixy"
+      android:text="кликай на предметы, и после нажимай на кнопку соединения"
+      android:textColor="#000000"
+      android:textSize="16dp"
+      app:layout_constraintBottom_toBottomOf="@+id/imageView17"
+      app:layout_constraintEnd_toEndOf="@+id/imageView3"
+      app:layout_constraintStart_toEndOf="@+id/imageView11"
+      app:layout_constraintTop_toTopOf="@+id/imageView17" />
+
+  <TextView
+      android:id="@+id/textView10"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="32dp"
+      android:fontFamily="@font/pixy"
+      android:text="если ошибся с выбором, нажимай на кнопку удаления"
+      android:textColor="#000000"
+      android:textSize="16dp"
+      app:layout_constraintBottom_toBottomOf="@+id/imageView18"
+      app:layout_constraintEnd_toEndOf="@+id/imageView3"
+      app:layout_constraintStart_toEndOf="@+id/imageView11"
+      app:layout_constraintTop_toTopOf="@+id/imageView18" />
+
+  <TextView
+      android:id="@+id/textView11"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="32dp"
+      android:fontFamily="@font/pixy"
+      android:text="важно! если задержать палец на любом предмете, то сверху можно найти словарь"
+      android:textColor="#ffffff"
+      android:textSize="12dp"
+      app:layout_constraintBottom_toBottomOf="@+id/imageView20"
+      app:layout_constraintEnd_toEndOf="@+id/imageView3"
+      app:layout_constraintStart_toEndOf="@+id/imageView11"
+      app:layout_constraintTop_toTopOf="@+id/imageView20" />
+
+  <ImageView
+      android:id="@+id/imageView17"
+      android:layout_width="80dp"
+      android:layout_height="80dp"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="32dp"
+      app:layout_constraintStart_toStartOf="@+id/imageView3"
+      app:layout_constraintTop_toBottomOf="@+id/imageView11"
+      app:srcCompat="@drawable/ic_merge" />
+
+  <ImageView
+      android:id="@+id/imageView18"
+      android:layout_width="80dp"
+      android:layout_height="80dp"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="32dp"
+      app:layout_constraintStart_toStartOf="@+id/imageView3"
+      app:layout_constraintTop_toBottomOf="@+id/imageView17"
+      app:srcCompat="@drawable/ic_close_alert" />
+
+  <ImageView
+      android:id="@+id/imageView20"
+      android:layout_width="64dp"
+      android:layout_height="64dp"
+      android:layout_marginStart="32dp"
+      android:layout_marginTop="52dp"
+      app:layout_constraintStart_toStartOf="@+id/imageView3"
+      app:layout_constraintTop_toBottomOf="@+id/imageView18"
+      app:srcCompat="@drawable/ic_dictionary" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

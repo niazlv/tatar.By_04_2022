@@ -8,9 +8,15 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Vibrator;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -84,7 +90,26 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        startActivity(new Intent(GameActivity.this, TestActivity.class));
+
+        SharedPreferences sp = getSharedPreferences("pref", Context.MODE_PRIVATE);
+        // проверяем, первый ли раз открывается программа
+        boolean hasVisited = sp.getBoolean("hasVisited", false);
+
+        if (!hasVisited) {
+
+            //выводим алерт
+            AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+            View mView = (ConstraintLayout) getLayoutInflater().inflate(R.layout.alert_info, null);
+            builder.setView(mView);
+            AlertDialog dialog = builder.create();
+            dialog.getWindow().setBackgroundDrawableResource(R.color.translucent_black);
+            dialog.show();
+
+
+            SharedPreferences.Editor e = sp.edit();
+            e.putBoolean("hasVisited", true);
+            e.commit();
+        }
 
         final String str_data = Assets2Str("level1.json");
         todoTV = findViewById(R.id.text_hint);
@@ -217,101 +242,128 @@ public class GameActivity extends AppCompatActivity {
                             mergeList[j][0][0] = "0";
                             mergeList[j][0][1] = "0";
 
-                            //create alert
-
-                            AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
-                            View mView = (ConstraintLayout) getLayoutInflater().inflate(R.layout.activity_alert_get_new_word, null);
-                            TextView mRus = mView.findViewById(R.id.rus);
-                            TextView mTat = mView.findViewById(R.id.tat);
-                            ImageView mImage = mView.findViewById(R.id.item_image);
-                            TextView mExample = mView.findViewById(R.id.example);
-                            TextView mTranslation = mView.findViewById(R.id.translation_example);
-                            TextView mAdditional = mView.findViewById(R.id.text_additional);
+                            if (String.valueOf(mergeTemp.get(0))=="учитель"){
 
 
-                            Toast.makeText(GameActivity.this, "Рецепт создан!", Toast.LENGTH_SHORT).show();
-                            //get name in russian, tatar and get resource image
-                            String[] res;
-                            res = findInJSON(str_data,mergeList[j][1][0]);
-                            lrus = res[0];
-                            ltat = res[1];
-                            limg = res[2];
-                            ldef = res[3];
-                            lexample=res[4];
-                            ltranslation=res[5];
-                            mRus.setText(lrus);
-                            mTat.setText(ltat);
-                            mExample.setText(lexample);
-                            mTranslation.setText(ltranslation);
-                            if(ldef.equals(""))
-                                mAdditional.setText("Продолжай в том же духе! У тебя хорошо получается!");
-                            else
-                                mAdditional.setText(ldef);
-                            for(int k =0;k<todo.size();k++)
-                            {
-                                if(todo.get(k).equals(lrus))
-                                {
-                                    Toast.makeText(GameActivity.this, lrus+" del", Toast.LENGTH_SHORT).show();
-                                    todo.remove(k);
-                                }
-                            }
-                            todoTV.setText(todoBase+todo.get(0));
-                            //add to dict
-                            ArrayList<String> mList = new ArrayList<String>();
-                            mList.add(ltat);
-                            mList.add(ldef);
-                            mArrayDict.add(mList);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+                                View mView = (ConstraintLayout) getLayoutInflater().inflate(R.layout.activity_alert_get_new_word_for_teacher, null);
+                                ImageView mTest = mView.findViewById(R.id.to_test);
+                                mTest.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        startActivity(new Intent(GameActivity.this, TestActivity.class));
+                                    }
+                                });
 
-                            //double word
-                            try {
-                                res = findInJSON(str_data, mergeList[j][2][0]);
-                                mList = new ArrayList<String>();
-                                mList.add(res[1]);
-                                mList.add(res[3]);
-                                mArrayDict.add(mList);
-                            } catch (Exception e){}
+                                builder.setView(mView);
+                                AlertDialog dialog = builder.create();
+                                dialog.getWindow().setBackgroundDrawableResource(R.color.translucent_black);
+                                dialog.show();
 
-                            mImage.setImageDrawable(ContextCompat.getDrawable(GameActivity.this,getResources().getIdentifier(limg, "drawable", getPackageName())));
 
-                            //alert show
-                            builder.setView(mView);
-                            AlertDialog dialog = builder.create();
-                            dialog.getWindow().setBackgroundDrawableResource(R.color.translucent_black);
-                            dialog.show();
 
-                            //simple check count overflow
-                            if(place<=24)
-                                place++;
+                            } else{
+                                //create alert
 
-                            //!!!!----MAGIC----!!!!
-                            ImageView tempim = findViewById(getResources().getIdentifier("im"+String.valueOf(place), "id",getPackageName()));
-                            TextView tempt = findViewById(getResources().getIdentifier("t"+String.valueOf(place), "id",getPackageName()));
-                            tempim.setVisibility(View.VISIBLE);
-                            tempim.setImageDrawable(ContextCompat.getDrawable(GameActivity.this,getResources().getIdentifier(limg, "drawable", getPackageName())));
-                            tempt.setText(ltat);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+                                View mView = (ConstraintLayout) getLayoutInflater().inflate(R.layout.activity_alert_get_new_word, null);
+                                TextView mRus = mView.findViewById(R.id.rus);
+                                TextView mTat = mView.findViewById(R.id.tat);
+                                ImageView mImage = mView.findViewById(R.id.item_image);
+                                TextView mExample = mView.findViewById(R.id.example);
+                                TextView mTranslation = mView.findViewById(R.id.translation_example);
+                                TextView mAdditional = mView.findViewById(R.id.text_additional);
 
-                            //add human if have 5 items
-                            if(place == 5) {
-                                res = findInJSON(str_data, "человек");
-                                place++;
+
+                                //get name in russian, tatar and get resource image
+                                String[] res;
+                                res = findInJSON(str_data,mergeList[j][1][0]);
                                 lrus = res[0];
                                 ltat = res[1];
                                 limg = res[2];
-                                tempim = findViewById(getResources().getIdentifier("im" + String.valueOf(place), "id", getPackageName()));
-                                tempt = findViewById(getResources().getIdentifier("t" + String.valueOf(place), "id", getPackageName()));
+                                ldef = res[3];
+                                lexample=res[4];
+                                ltranslation=res[5];
+                                mRus.setText(lrus);
+                                mTat.setText(ltat);
+                                mExample.setText(lexample);
+                                mTranslation.setText(ltranslation);
+                                if(ldef.equals(""))
+                                    mAdditional.setText("Продолжай в том же духе! У тебя хорошо получается!");
+                                else
+                                    mAdditional.setText(ldef);
+                                for(int k =0;k<todo.size();k++)
+                                {
+                                    if(todo.get(k).equals(lrus))
+                                    {
+                                        todo.remove(k);
+                                    }
+                                }
+                                todoTV.setText(todoBase+todo.get(0));
+                                //add to dict
+                                ArrayList<String> mList = new ArrayList<String>();
+                                mList.add(ltat);
+                                mList.add(ldef);
+                                mArrayDict.add(mList);
+
+                                //double word
+                                try {
+                                    res = findInJSON(str_data, mergeList[j][2][0]);
+                                    mList = new ArrayList<String>();
+                                    mList.add(res[1]);
+                                    mList.add(res[3]);
+                                    mArrayDict.add(mList);
+                                } catch (Exception e){}
+
+                                mImage.setImageDrawable(ContextCompat.getDrawable(GameActivity.this,getResources().getIdentifier(limg, "drawable", getPackageName())));
+
+                                //alert show
+                                builder.setView(mView);
+                                AlertDialog dialog = builder.create();
+                                dialog.getWindow().setBackgroundDrawableResource(R.color.translucent_black);
+                                dialog.show();
+
+                                //simple check count overflow
+                                if(place<=24)
+                                    place++;
+
+                                //!!!!----MAGIC----!!!!
+                                ImageView tempim = findViewById(getResources().getIdentifier("im"+String.valueOf(place), "id",getPackageName()));
+                                TextView tempt = findViewById(getResources().getIdentifier("t"+String.valueOf(place), "id",getPackageName()));
                                 tempim.setVisibility(View.VISIBLE);
-                                tempim.setImageDrawable(ContextCompat.getDrawable(GameActivity.this, getResources().getIdentifier(limg, "drawable", getPackageName())));
+                                tempim.setImageDrawable(ContextCompat.getDrawable(GameActivity.this,getResources().getIdentifier(limg, "drawable", getPackageName())));
                                 tempt.setText(ltat);
+
+                                //add human if have 5 items
+                                if(place == 5) {
+                                    res = findInJSON(str_data, "человек");
+                                    place++;
+                                    lrus = res[0];
+                                    ltat = res[1];
+                                    limg = res[2];
+                                    tempim = findViewById(getResources().getIdentifier("im" + String.valueOf(place), "id", getPackageName()));
+                                    tempt = findViewById(getResources().getIdentifier("t" + String.valueOf(place), "id", getPackageName()));
+                                    tempim.setVisibility(View.VISIBLE);
+                                    tempim.setImageDrawable(ContextCompat.getDrawable(GameActivity.this, getResources().getIdentifier(limg, "drawable", getPackageName())));
+                                    tempt.setText(ltat);
+                                }
+
+                                //and reset mergin header
+                                count = 0;
+                                mHolder1.setImageResource(0);
+                                mHolder2.setImageResource(0);
+                                mHolder3.setImageResource(0);
+                                merge = new ArrayList<String>();
+                                //exit from loop
+                                break;
                             }
 
-                            //and reset mergin header
-                            count = 0;
-                            mHolder1.setImageResource(0);
-                            mHolder2.setImageResource(0);
-                            mHolder3.setImageResource(0);
-                            merge = new ArrayList<String>();
-                            //exit from loop
-                            break;
+                        } else{
+                            Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                            vib.vibrate(400);
+                            mHolder1.startAnimation(AnimationUtils.loadAnimation(GameActivity.this,R.anim.shake));
+                            mHolder2.startAnimation(AnimationUtils.loadAnimation(GameActivity.this,R.anim.shake));
+                            mHolder3.startAnimation(AnimationUtils.loadAnimation(GameActivity.this,R.anim.shake));
                         }
                     }
                 }
