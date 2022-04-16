@@ -824,15 +824,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_cross" />
-        <ImageView
 
+        <ImageView
             android:layout_weight="1"
             android:id="@+id/merge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_merge" />
-        <ImageView
 
+        <ImageView
             android:layout_weight="1"
             android:id="@+id/hint"
             android:layout_width="wrap_content"

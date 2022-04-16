@@ -28,6 +28,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView im;
     TextView tv;
     Integer count = 0;
+    final ArrayList<String> merge = new ArrayList<String>();
     String tat, rus, img;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -83,7 +84,7 @@ public class GameActivity extends AppCompatActivity {
             final ImageView mHolder2 = findViewById(R.id.holder2);
             final ImageView mHolder3 = findViewById(R.id.holder3);
 
-            final ArrayList<String> merge = new ArrayList<String>();
+
 
             im.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -103,6 +104,25 @@ public class GameActivity extends AppCompatActivity {
                     } else{
                         Toast.makeText(GameActivity.this, "Вы не можете смешивать более 3-х предметов!", Toast.LENGTH_SHORT).show();
                     }
+                }
+            });
+
+            ImageView mDelete = findViewById(R.id.delete);
+            mDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    count = 0;
+                    mHolder1.setVisibility(View.INVISIBLE);
+                    mHolder2.setVisibility(View.INVISIBLE);
+                    mHolder3.setVisibility(View.INVISIBLE);
+                }
+            });
+
+            ImageView mMerge = findViewById(R.id.merge);
+            mMerge.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(GameActivity.this, String.valueOf(merge.size()), Toast.LENGTH_SHORT).show();
                 }
             });
 
