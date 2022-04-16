@@ -29,7 +29,7 @@ import org.w3c.dom.Text;
 
 public class GameActivity extends AppCompatActivity {
 
-    String[] findInJSON(String str_data,String find)
+    String[] findInJSON(String str_data,String find,Boolean isTat)
     {
         String lrus = null,limg=null,ltat=null;
 
@@ -37,7 +37,8 @@ public class GameActivity extends AppCompatActivity {
             try {
                 JSONObject obj = new JSONObject(str_data);
                 lrus = obj.getJSONObject(String.valueOf(x)).getString("rus");
-                if(!lrus.equals(find))
+                ltat = obj.getJSONObject(String.valueOf(x)).getString("tatar");
+                if((!lrus.equals(find) && !isTat)||(!ltat.equals(find) && isTat))
                     continue;
                 limg = obj.getJSONObject(String.valueOf(x)).getString("img");
                 ltat = obj.getJSONObject(String.valueOf(x)).getString("tatar");
@@ -47,6 +48,9 @@ public class GameActivity extends AppCompatActivity {
             }
         }
         return new String[]{lrus, ltat, limg};
+    }
+    String[] findInJSON(String str_data,String find){
+        return findInJSON(str_data,find,false);
     }
 
     ImageView im;
@@ -95,7 +99,7 @@ public class GameActivity extends AppCompatActivity {
 
             im = findViewById(getResources().getIdentifier("im"+String.valueOf(i), "id",getPackageName()));
             tv = findViewById(getResources().getIdentifier("t"+String.valueOf(i), "id",getPackageName()));
-
+            //init first resources
             if (i <= 3){
                 im.setImageDrawable(ContextCompat.getDrawable(this,this.getResources().getIdentifier(img, "drawable", this.getPackageName())));
                 tv.setText(tat);
@@ -113,7 +117,7 @@ public class GameActivity extends AppCompatActivity {
             final ImageView mHolder3 = findViewById(R.id.holder3);
 
 
-
+            //header with 3 slots to marge
             im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -135,6 +139,7 @@ public class GameActivity extends AppCompatActivity {
                 }
             });
 
+            //delete button
             ImageView mDelete = findViewById(R.id.delete);
             mDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -147,17 +152,24 @@ public class GameActivity extends AppCompatActivity {
                 }
             });
 
+            //merge button
             ImageView mMerge = findViewById(R.id.merge);
             mMerge.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Toast.makeText(GameActivity.this, String.valueOf(merge.size()), Toast.LENGTH_SHORT).show();
+                    //sort current merge combination
                     Collections.sort(merge);
+
                     ArrayList<String> mergeTemp;
                     for(int j = 0; j<mergeList.length;j++) {
                         mergeTemp = new ArrayList<String>(Arrays.asList(mergeList[j][0]));
                         Collections.sort(mergeTemp);
+
+                        //if merge found
                         if (mergeTemp.equals(merge)) {
+                            //block repeat open new resource
+                            mergeList[j][0][0] = "0";
+                            mergeList[j][0][1] = "0";
 
                             //create alert
                             AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
@@ -171,6 +183,7 @@ public class GameActivity extends AppCompatActivity {
 
 
                             Toast.makeText(GameActivity.this, "Рецепт создан!", Toast.LENGTH_SHORT).show();
+                            //get name in russian, tatar and get resource image
                             String[] res;
                             res = findInJSON(str_data,mergeList[j][1][0]);
                             lrus = res[0];
@@ -180,19 +193,24 @@ public class GameActivity extends AppCompatActivity {
                             mTat.setText(ltat);
                             mImage.setImageDrawable(ContextCompat.getDrawable(GameActivity.this,getResources().getIdentifier(limg, "drawable", getPackageName())));
 
+                            //alert show
                             builder.setView(mView);
                             AlertDialog dialog = builder.create();
                             dialog.getWindow().setBackgroundDrawableResource(R.color.translucent_black);
                             dialog.show();
 
+                            //simple check count overflow
                             if(place<=24)
                                 place++;
+
+                            //!!!!----MAGIC----!!!!
                             ImageView tempim = findViewById(getResources().getIdentifier("im"+String.valueOf(place), "id",getPackageName()));
                             TextView tempt = findViewById(getResources().getIdentifier("t"+String.valueOf(place), "id",getPackageName()));
                             tempim.setVisibility(View.VISIBLE);
                             tempim.setImageDrawable(ContextCompat.getDrawable(GameActivity.this,getResources().getIdentifier(limg, "drawable", getPackageName())));
                             tempt.setText(ltat);
 
+                            //add human if have 5 items
                             if(place == 5) {
                                 res = findInJSON(str_data, "человек");
                                 place++;
@@ -205,18 +223,20 @@ public class GameActivity extends AppCompatActivity {
                                 tempim.setImageDrawable(ContextCompat.getDrawable(GameActivity.this, getResources().getIdentifier(limg, "drawable", getPackageName())));
                                 tempt.setText(ltat);
                             }
+
+                            //and reset mergin header
                             count = 0;
                             mHolder1.setImageResource(0);
                             mHolder2.setImageResource(0);
                             mHolder3.setImageResource(0);
                             merge = new ArrayList<String>();
+                            //exit from loop
                             break;
                         }
                     }
                 }
             });
-
-
+            final TextView temptv=tv;
             im.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
@@ -228,17 +248,18 @@ public class GameActivity extends AppCompatActivity {
                     ImageView mCloseAlert = mView.findViewById(R.id.close_alert);
                     TextView mRus = mView.findViewById(R.id.text_rus);
                     TextView mTat = mView.findViewById(R.id.text_tat);
+                    //find tat name in json and get any names and resources to correct give request
+                    String[] res = findInJSON(str_data,temptv.getText().toString(),true);
+                    mTat.setText(res[1]);
+                    mRus.setText(res[0]);
+                    mImage.setImageDrawable(ContextCompat.getDrawable(GameActivity.this, getResources().getIdentifier(res[2], "drawable", getPackageName())));
 
-                    mTat.setText(new_tat);
-                    mRus.setText(new_rus);
-                    mImage.setImageDrawable(new_img.getDrawable());
-
+                    //show dialog
                     builder.setView(mView);
                     AlertDialog dialog = builder.create();
                     dialog.getWindow().setBackgroundDrawableResource(R.color.translucent_black);
                     dialog.show();
-
-
+                    //need to exit and enable tacktic responce
                     return true;
                 }
             });
