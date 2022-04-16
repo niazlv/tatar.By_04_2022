@@ -205,6 +205,11 @@ public class GameActivity extends AppCompatActivity {
                                 tempim.setImageDrawable(ContextCompat.getDrawable(GameActivity.this, getResources().getIdentifier(limg, "drawable", getPackageName())));
                                 tempt.setText(ltat);
                             }
+                            count = 0;
+                            mHolder1.setImageResource(0);
+                            mHolder2.setImageResource(0);
+                            mHolder3.setImageResource(0);
+                            merge = new ArrayList<String>();
                             break;
                         }
                     }
