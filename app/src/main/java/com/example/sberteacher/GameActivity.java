@@ -28,6 +28,27 @@ import java.util.Collections;
 import org.w3c.dom.Text;
 
 public class GameActivity extends AppCompatActivity {
+
+    String[] findInJSON(String str_data,String find)
+    {
+        String lrus = null,limg=null,ltat=null;
+
+        for(int x = 1;x<24;x++) {
+            try {
+                JSONObject obj = new JSONObject(str_data);
+                lrus = obj.getJSONObject(String.valueOf(x)).getString("rus");
+                if(!lrus.equals(find))
+                    continue;
+                limg = obj.getJSONObject(String.valueOf(x)).getString("img");
+                ltat = obj.getJSONObject(String.valueOf(x)).getString("tatar");
+                break;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return new String[]{lrus, ltat, limg};
+    }
+
     ImageView im;
     TextView tv;
     Integer count = 0;
@@ -141,32 +162,29 @@ public class GameActivity extends AppCompatActivity {
                             //create alert
                             AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
                             View mView = (ConstraintLayout) getLayoutInflater().inflate(R.layout.activity_alert_get_new_word, null);
-                            TextView mRus = mView.findViewById(R.id.tat);
-                            TextView mTat = mView.findViewById(R.id.rus);
+                            TextView mRus = mView.findViewById(R.id.rus);
+                            TextView mTat = mView.findViewById(R.id.tat);
+                            ImageView mImage = mView.findViewById(R.id.item_image);
                             TextView mExample = mView.findViewById(R.id.example);
                             TextView mTranslation = mView.findViewById(R.id.translation_example);
                             TextView mAdditional = mView.findViewById(R.id.text_additional);
 
-                            //писать здесь
+
+                            Toast.makeText(GameActivity.this, "Рецепт создан!", Toast.LENGTH_SHORT).show();
+                            String[] res;
+                            res = findInJSON(str_data,mergeList[j][1][0]);
+                            lrus = res[0];
+                            ltat = res[1];
+                            limg = res[2];
+                            mRus.setText(lrus);
+                            mTat.setText(ltat);
+                            mImage.setImageDrawable(ContextCompat.getDrawable(GameActivity.this,getResources().getIdentifier(limg, "drawable", getPackageName())));
 
                             builder.setView(mView);
                             AlertDialog dialog = builder.create();
                             dialog.getWindow().setBackgroundDrawableResource(R.color.translucent_black);
                             dialog.show();
 
-                            Toast.makeText(GameActivity.this, "Рецепт создан!", Toast.LENGTH_SHORT).show();
-                            for(int x = 1;x<24;x++) {
-                                try {
-                                    JSONObject obj = new JSONObject(str_data);
-                                    lrus = obj.getJSONObject(String.valueOf(x)).getString("rus");
-                                    if(!lrus.equals(mergeList[j][1][0]))
-                                        continue;
-                                    limg = obj.getJSONObject(String.valueOf(x)).getString("img");
-                                    ltat = obj.getJSONObject(String.valueOf(x)).getString("tatar");
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            }
                             if(place<=24)
                                 place++;
                             ImageView tempim = findViewById(getResources().getIdentifier("im"+String.valueOf(place), "id",getPackageName()));
@@ -174,6 +192,19 @@ public class GameActivity extends AppCompatActivity {
                             tempim.setVisibility(View.VISIBLE);
                             tempim.setImageDrawable(ContextCompat.getDrawable(GameActivity.this,getResources().getIdentifier(limg, "drawable", getPackageName())));
                             tempt.setText(ltat);
+
+                            if(place == 5) {
+                                res = findInJSON(str_data, "человек");
+                                place++;
+                                lrus = res[0];
+                                ltat = res[1];
+                                limg = res[2];
+                                tempim = findViewById(getResources().getIdentifier("im" + String.valueOf(place), "id", getPackageName()));
+                                tempt = findViewById(getResources().getIdentifier("t" + String.valueOf(place), "id", getPackageName()));
+                                tempim.setVisibility(View.VISIBLE);
+                                tempim.setImageDrawable(ContextCompat.getDrawable(GameActivity.this, getResources().getIdentifier(limg, "drawable", getPackageName())));
+                                tempt.setText(ltat);
+                            }
                             break;
                         }
                     }
