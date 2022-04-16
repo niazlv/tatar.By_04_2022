@@ -4,15 +4,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
 
 import android.annotation.SuppressLint;
-import android.media.Image;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,10 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-
-import org.w3c.dom.Text;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -116,23 +108,25 @@ public class GameActivity extends AppCompatActivity {
             final ImageView mHolder2 = findViewById(R.id.holder2);
             final ImageView mHolder3 = findViewById(R.id.holder3);
 
+            final  TextView finalTV = tv;
 
             //header with 3 slots to marge
             im.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    String[] res = findInJSON(str_data,finalTV.getText().toString(),true);
                     if (count == 0){
                         mHolder1.setImageDrawable(new_img.getDrawable());
                         count += 1;
-                        merge.add(new_rus);
+                        merge.add(res[0]);
                     } else if (count == 1){
                         mHolder2.setImageDrawable(new_img.getDrawable());
                         count += 1;
-                        merge.add(new_rus);
+                        merge.add(res[0]);
                     } else if (count == 2){
                         mHolder3.setImageDrawable(new_img.getDrawable());
                         count += 1;
-                        merge.add(new_rus);
+                        merge.add(res[0]);
                     } else{
                         Toast.makeText(GameActivity.this, "Вы не можете смешивать более 3-х предметов!", Toast.LENGTH_SHORT).show();
                     }
@@ -236,6 +230,7 @@ public class GameActivity extends AppCompatActivity {
                     }
                 }
             });
+            //holding resource(opening menu)
             final TextView temptv=tv;
             im.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
