@@ -3,24 +3,46 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/ic_5.xml" value="0.1935" />
-        <entry key="app/src/main/res/drawable/ic_alert_new_back.xml" value="0.1935" />
-        <entry key="app/src/main/res/drawable/ic_alert_window.xml" value="0.1935" />
-        <entry key="app/src/main/res/drawable/ic_back.xml" value="0.1935" />
-        <entry key="app/src/main/res/drawable/ic_cross.xml" value="0.1935" />
-        <entry key="app/src/main/res/drawable/ic_dialog.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_dict_alert.xml" value="0.1935" />
-        <entry key="app/src/main/res/drawable/ic_level_1.xml" value="0.1935" />
-        <entry key="app/src/main/res/drawable/ic_pen.xml" value="0.1935" />
-        <entry key="app/src/main/res/drawable/ic_pencil.xml" value="0.1935" />
-        <entry key="app/src/main/res/layout/activity_alert_get_new_word.xml" value="0.3007324218750001" />
+        <entry key="app/src/main/res/drawable/ic_5.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/ic_alert_new_back.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/ic_alert_window.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/ic_back.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/ic_back_alert.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/ic_backpack.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/ic_book.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/ic_close_alert.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/ic_cross.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_dialog.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_dict_alert.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_dictionary.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_dye.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_exit.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_field.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_hint.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_holder.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_human.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_image_frame.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_level_1.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_level_closed.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_library.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_main_holder.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_merge.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_paper.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_pen.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_start_button.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_student.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_teacher.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_window_back.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_workbook.xml" value="0.2085" />
+        <entry key="app/src/main/res/layout/activity_alert_get_new_word.xml" value="0.2680409250695721" />
         <entry key="app/src/main/res/layout/activity_create_module.xml" value="0.25052083333333336" />
-        <entry key="app/src/main/res/layout/activity_dictionary.xml" value="0.18541666666666667" />
-        <entry key="app/src/main/res/layout/activity_game.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/activity_dictionary.xml" value="0.26051177978515627" />
+        <entry key="app/src/main/res/layout/activity_game.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_level.xml" value="0.26930694580078124" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_teacher.xml" value="0.25052083333333336" />
-        <entry key="app/src/main/res/layout/alert_item_info.xml" value="0.18541666666666667" />
+        <entry key="app/src/main/res/layout/alert_item_info.xml" value="0.29349365234375" />
+        <entry key="app/src/main/res/layout/dict_layout.xml" value="0.20865987141927084" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.209" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.127" />
       </map>
@@ -31,12 +53,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.25052083333333336" />
-      </ProjectState>
-    </option>
   </component>
 </project>
