@@ -165,6 +165,36 @@ public class GameActivity extends AppCompatActivity {
                 }
             });
 
+            mHolder1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(count > 0)
+                    {
+                        mHolder1.setImageResource(0);
+                        if(count>1)
+                        {
+                            //ОШИБКА ТУТ!!! При count=3 это условие выполняется не один раз!
+                            mHolder1.setImageDrawable(mHolder2.getDrawable());
+                            mHolder2.setImageResource(0);
+                            if(count>2) {
+                                merge.set(count-3,merge.get(count-2));
+                                mHolder2.setImageDrawable(mHolder3.getDrawable());
+                                mHolder3.setImageResource(0);
+                                merge.set(count-2,merge.get(count-1));
+                                merge.remove(count-1);
+                            }
+                            else {
+                                merge.set(count-2,merge.get(count-1));
+                                merge.remove(count - 1);
+                            }
+                        }
+                        else
+                            merge.remove(count-1);
+                        count--;
+                    }
+                }
+            });
+
             //merge button
             ImageView mMerge = findViewById(R.id.merge);
             mMerge.setOnClickListener(new View.OnClickListener() {
