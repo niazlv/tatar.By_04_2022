@@ -76,7 +76,9 @@ public class GameActivity extends AppCompatActivity {
     Integer place = 3;
     ArrayList<String> merge = new ArrayList<String>();
     String tat, rus, img,lrus,limg, ltat, def, ldef,lexample,ltranslation;
-
+    ArrayList<String> todo=new ArrayList<String>(Arrays.asList("тетрадь", "книга", "рюкзак", "школьник","учитель","школа","библиотека","-"));
+    TextView todoTV;
+    String todoBase="";
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +87,9 @@ public class GameActivity extends AppCompatActivity {
         startActivity(new Intent(GameActivity.this, TestActivity.class));
 
         final String str_data = Assets2Str("level1.json");
-
+        todoTV = findViewById(R.id.text_hint);
+        todoBase = todoTV.getText().toString();
+        todoTV.setText(todoBase+todo.get(0));
         final String[][][] mergeList ={ { {"бумага", "бумага"}, {"книга"}, {"читать"}} , {{"бумага", "карандаш"}, {"тетрадь"}, {"писать"}}, {{"книга", "тетрадь"}, {"рюкзак"}, {"большой"}}, {{"человек", "рюкзак"}, {"школьник"}, {"умный"}}, {{"школьник", "школьник"}, {"учитель"}, {"учить"}}, {{"книга", "книга", "книга"}, {"библиотека"}, {"маленькая"}}, {{"книга", "ученик", "тетрадь"}, {"пятерка"}, {"получать"}}, {{"учитель", "школьник", "школьник"}, {"школа"}, {"большая"}}  };
 
         for (int i=1; i<=24; i++){
@@ -173,7 +177,6 @@ public class GameActivity extends AppCompatActivity {
                         mHolder1.setImageResource(0);
                         if(count>1)
                         {
-                            //ОШИБКА ТУТ!!! При count=3 это условие выполняется не один раз!
                             mHolder1.setImageDrawable(mHolder2.getDrawable());
                             mHolder2.setImageResource(0);
                             if(count>2) {
@@ -244,7 +247,15 @@ public class GameActivity extends AppCompatActivity {
                                 mAdditional.setText("Продолжай в том же духе! У тебя хорошо получается!");
                             else
                                 mAdditional.setText(ldef);
-
+                            for(int k =0;k<todo.size();k++)
+                            {
+                                if(todo.get(k).equals(lrus))
+                                {
+                                    Toast.makeText(GameActivity.this, lrus+" del", Toast.LENGTH_SHORT).show();
+                                    todo.remove(k);
+                                }
+                            }
+                            todoTV.setText(todoBase+todo.get(0));
                             //add to dict
                             ArrayList<String> mList = new ArrayList<String>();
                             mList.add(ltat);
