@@ -29,8 +29,9 @@ import org.w3c.dom.Text;
 public class GameActivity extends AppCompatActivity {
     ImageView im;
     TextView tv;
-    String st;
+    String st, tat, rus, img;
     String iimg;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,112 +51,66 @@ public class GameActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         final String str_data = new String(buffer);
-        //result str_data json string
 
-        //clear icons
-        for(int i=1;i<=24;i++) {
-            int iimid = getResources().getIdentifier("im"+String.valueOf(i),
-                    "id",getPackageName());
-            int itid = getResources().getIdentifier("t"+String.valueOf(i),
-                    "id",getPackageName());
-
-
+        for (int i=1; i<=24; i++){
             try {
                 JSONObject obj = new JSONObject(str_data);
-                iimg = obj.getJSONObject(String.valueOf(i)).getString("img");
+                tat = obj.getJSONObject(String.valueOf(i)).getString("tatar");
+                rus = obj.getJSONObject(String.valueOf(i)).getString("rus");
+                img = obj.getJSONObject(String.valueOf(i)).getString("img");
             } catch (Exception e){
                 e.printStackTrace();
             }
 
-            im = findViewById(iimid);
-            tv = findViewById(itid);
-
-            //im.setImageDrawable(ContextCompat.getDrawable(this,this.getResources().getIdentifier(iimg, "drawable", this.getPackageName())));
-
-            im.setImageResource(this.getResources().getIdentifier(iimg, "drawable", this.getPackageName()));
-
-            tv.setText("");
-            if(i<=3)  continue;
-            im.setVisibility(View.INVISIBLE);
-            tv.setVisibility(View.INVISIBLE);
-        }
-
-        //main action
-        for(int i=1;i<=24;i++) {
-            final int iimid = getResources().getIdentifier("im"+String.valueOf(i),
-                    "id",getPackageName());
-            int itid = getResources().getIdentifier("t"+String.valueOf(i),
-                    "id",getPackageName());
-            im = findViewById(iimid);
-            tv = findViewById(itid);
 
 
-            final int finalI = i;
-            im.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    st = "Test"+String.valueOf(finalI);
-                    String iimg = "ic_exit";
-                    try {
-                        JSONObject obj = new JSONObject(str_data);
-                        iimg = obj.getJSONObject(String.valueOf(finalI)).getString("img");
-                    } catch (Exception e){
-                        e.printStackTrace();
-                    }
+            im = findViewById(getResources().getIdentifier("im"+String.valueOf(i), "id",getPackageName()));
+            tv = findViewById(getResources().getIdentifier("t"+String.valueOf(i), "id",getPackageName()));
 
-                    Toast.makeText(GameActivity.this,st,Toast.LENGTH_SHORT).show();
-                    //im.setImageDrawable(getResources().getDrawable(getResources().getIdentifier(iimg, "drawable", getPackageName())));
+            if (i <= 3){
+                im.setImageDrawable(ContextCompat.getDrawable(this,this.getResources().getIdentifier(img, "drawable", this.getPackageName())));
+                tv.setText(tat);
+            } else{
+                im.setVisibility(View.INVISIBLE);
+                tv.setText("");
+            }
 
-                    //view.setVisibility(View.INVISIBLE);
-                    //findViewById(getResources().getIdentifier("t"+String.valueOf(finalI),
-                    //        "id",getPackageName())).setVisibility(View.INVISIBLE);
-                }
-            });
-
+            final String new_tat = tat;
+            final String new_rus = rus;
+            final ImageView new_img = im;
 
             im.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
-                public boolean onLongClick(View view) {
-                    String rus = "null";
-                    String tat = "null";
-                    try {
-                        JSONObject obj = new JSONObject(str_data);
-                        rus = obj.getJSONObject(String.valueOf(finalI)).getString("rus");
-                        tat = obj.getJSONObject(String.valueOf(finalI)).getString("tatar");
-                        Toast.makeText(GameActivity.this,rus,Toast.LENGTH_SHORT).show();
-                    } catch (Exception e){
-                        e.printStackTrace();
-                    }
-                    st = "Hold on "+String.valueOf(finalI)+" btn";
+                public boolean onLongClick(View v) {
 
                     //create alert dialog
                     AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
-                    View mView = (ConstraintLayout) getLayoutInflater()
-                            .inflate(R.layout.alert_item_info, null);
-
+                    View mView = (ConstraintLayout) getLayoutInflater().inflate(R.layout.alert_item_info, null);
+                    ImageView mImage = mView.findViewById(R.id.mImage);
                     ImageView mDictionary = mView.findViewById(R.id.dictionary);
                     ImageView mCloseAlert = mView.findViewById(R.id.close_alert);
                     TextView mRus = mView.findViewById(R.id.text_rus);
                     TextView mTat = mView.findViewById(R.id.text_tat);
-                    ImageView mImage = mView.findViewById(R.id.mImage);
 
-                    mImage.setImageDrawable(im.getDrawable());
+                    mTat.setText(new_tat);
+                    mRus.setText(new_rus);
+                    mImage.setImageDrawable(new_img.getDrawable());
 
-                    mRus.setText(rus);
-                    mTat.setText(tat);
-
-                    builder.setView(view);
-                    AlertDialog dialog
-                            = builder.create();
+                    builder.setView(mView);
+                    AlertDialog dialog = builder.create();
                     dialog.getWindow().setBackgroundDrawableResource(R.color.translucent_black);
                     dialog.show();
 
 
-                    Toast.makeText(GameActivity.this,st,Toast.LENGTH_SHORT).show();
                     return true;
                 }
             });
         }
+
+
+
+
     }
 }
