@@ -26,7 +26,7 @@ public class GameActivity extends AppCompatActivity {
 
     String[] findInJSON(String str_data,String find,Boolean isTat)
     {
-        String lrus = null,limg=null,ltat=null;
+        String lrus = null,limg=null,ltat=null,ldef=null,example = null,translation = null;
 
         for(int x = 1;x<24;x++) {
             try {
@@ -38,12 +38,14 @@ public class GameActivity extends AppCompatActivity {
                 limg = obj.getJSONObject(String.valueOf(x)).getString("img");
                 ltat = obj.getJSONObject(String.valueOf(x)).getString("tatar");
                 ldef = obj.getJSONObject(String.valueOf(x)).getString("def");
+                example = obj.getJSONObject(String.valueOf(x)).getString("example");
+                translation = obj.getJSONObject(String.valueOf(x)).getString("translation");
                 break;
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return new String[]{lrus, ltat, limg, ldef};
+        return new String[]{lrus, ltat, limg, ldef,example,translation};
     }
     String[] findInJSON(String str_data,String find){
         return findInJSON(str_data,find,false);
@@ -55,7 +57,7 @@ public class GameActivity extends AppCompatActivity {
     Boolean isPlace = false;
     Integer place = 3;
     ArrayList<String> merge = new ArrayList<String>();
-    String tat, rus, img,lrus,limg, ltat, def, ldef;
+    String tat, rus, img,lrus,limg, ltat, def, ldef,lexample,ltranslation;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -197,13 +199,31 @@ public class GameActivity extends AppCompatActivity {
                             ltat = res[1];
                             limg = res[2];
                             ldef = res[3];
+                            lexample=res[4];
+                            ltranslation=res[5];
                             mRus.setText(lrus);
                             mTat.setText(ltat);
+                            mExample.setText(lexample);
+                            mTranslation.setText(ltranslation);
+                            if(ldef.equals(""))
+                                mAdditional.setText("Продолжай в том же духе! У тебя хорошо получается!");
+                            else
+                                mAdditional.setText(ldef);
 
+                            //add to dict
                             ArrayList<String> mList = new ArrayList<String>();
                             mList.add(ltat);
                             mList.add(ldef);
                             mArrayDict.add(mList);
+
+                            //double word
+                            try {
+                                res = findInJSON(str_data, mergeList[j][2][0]);
+                                mList = new ArrayList<String>();
+                                mList.add(res[1]);
+                                mList.add(res[3]);
+                                mArrayDict.add(mList);
+                            } catch (Exception e){}
 
                             mImage.setImageDrawable(ContextCompat.getDrawable(GameActivity.this,getResources().getIdentifier(limg, "drawable", getPackageName())));
 
@@ -269,6 +289,14 @@ public class GameActivity extends AppCompatActivity {
                     ImageView mCloseAlert = mView.findViewById(R.id.close_alert);
                     TextView mRus = mView.findViewById(R.id.text_rus);
                     TextView mTat = mView.findViewById(R.id.text_tat);
+
+                    mCloseAlert.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+
                     //find tat name in json and get any names and resources to correct give request
                     String[] res = findInJSON(str_data,temptv.getText().toString(),true);
                     mTat.setText(res[1]);
