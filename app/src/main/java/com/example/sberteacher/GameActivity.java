@@ -28,7 +28,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView im;
     TextView tv;
     Integer count = 0;
-    final ArrayList<String> merge = new ArrayList<String>();
+    ArrayList<String> merge = new ArrayList<String>();
     String tat, rus, img;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -112,9 +112,10 @@ public class GameActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     count = 0;
-                    mHolder1.setVisibility(View.INVISIBLE);
-                    mHolder2.setVisibility(View.INVISIBLE);
-                    mHolder3.setVisibility(View.INVISIBLE);
+                    mHolder1.setImageResource(0);
+                    mHolder2.setImageResource(0);
+                    mHolder3.setImageResource(0);
+                    merge = new ArrayList<String>();
                 }
             });
 
