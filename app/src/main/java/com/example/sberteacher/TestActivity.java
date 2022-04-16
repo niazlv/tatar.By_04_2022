@@ -71,7 +71,7 @@ public class TestActivity extends AppCompatActivity {
 
         String[] images = {"ic_pencil", "ic_paper", "ic_dye", "ic_teacher", "ic_student", "ic_5", "ic_school", "ic_book", "ic_workbook", "ic_library", "ic_human", "ic_backpack"};
         String src = Assets2Str("test1.json");
-        int[] test = {1,2,3,4};
+        ArrayList<Integer> test = new ArrayList<Integer>();
         JSONObject obj = null;
         try {
             obj = new JSONObject(src);
@@ -104,6 +104,12 @@ public class TestActivity extends AppCompatActivity {
                     continue;
                 while(images[rando].equals(str))
                     rando = r.nextInt(images.length);
+                for(int g = 0;g<test.size();g++)
+                {
+                    while (rando == test.get(g))
+                        rando = r.nextInt(images.length);
+                }
+                test.add(rando);
                 im = findViewById(getResources().getIdentifier("ans"+String.valueOf(j), "id",getPackageName()));
                 im.setImageDrawable(ContextCompat.getDrawable(this,this.getResources().getIdentifier(images[rando], "drawable", this.getPackageName())));
             }
