@@ -4,10 +4,14 @@
     android:viewportWidth="144"
     android:viewportHeight="134">
   <path
-      android:pathData="M28,5H118V17H126V29H139V120H118V129H28V120H6V29H17V17H28V5Z"
-      android:fillColor="#ffffff"
-      android:fillAlpha="0.6"
-      android:fillType="evenOdd"/>
+      android:pathData="M28,5h90v124h-90z"
+      android:fillColor="#ffffff"/>
+  <path
+      android:pathData="M17,17h109v100h-109z"
+      android:fillColor="#ffffff"/>
+  <path
+      android:pathData="M6,29h133v91h-133z"
+      android:fillColor="#ffffff"/>
   <path
       android:pathData="M0,24h7v98h-7z"
       android:fillColor="#1A1C30"/>

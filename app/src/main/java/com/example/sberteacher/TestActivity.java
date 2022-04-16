@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -63,6 +64,7 @@ public class TestActivity extends AppCompatActivity {
     }
 
     ImageView mAns1, mAns2, mAns3, mAns4;
+    Integer flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +88,7 @@ public class TestActivity extends AppCompatActivity {
         ImageView im;
         Random r = new Random();
         int ran = r.nextInt(4)+1;
-        //for(int i = 1; i<=5;i++)
+
         {
             String str=null;
             try {
@@ -113,6 +115,72 @@ public class TestActivity extends AppCompatActivity {
                 im = findViewById(getResources().getIdentifier("ans"+String.valueOf(j), "id",getPackageName()));
                 im.setImageDrawable(ContextCompat.getDrawable(this,this.getResources().getIdentifier(images[rando], "drawable", this.getPackageName())));
             }
+
+            flag = 0;
+
+            ImageView m13, m14, m15, m16;
+            m13 = findViewById(R.id.imageView13);
+            m14 = findViewById(R.id.imageView14);
+            m15 = findViewById(R.id.imageView15);
+            m16 = findViewById(R.id.imageView16);
+
+            mAns1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    m13.setImageResource(R.drawable.ic_test_holder);
+                    m14.setImageResource(R.drawable.ic_test_holder_tr);
+                    m15.setImageResource(R.drawable.ic_test_holder_tr);
+                    m16.setImageResource(R.drawable.ic_test_holder_tr);
+                    flag = 1;
+                }
+            });
+
+            mAns2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    m13.setImageResource(R.drawable.ic_test_holder_tr);
+                    m14.setImageResource(R.drawable.ic_test_holder);
+                    m15.setImageResource(R.drawable.ic_test_holder_tr);
+                    m16.setImageResource(R.drawable.ic_test_holder_tr);
+                    flag = 2;
+                }
+            });
+
+            mAns3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    m13.setImageResource(R.drawable.ic_test_holder_tr);
+                    m14.setImageResource(R.drawable.ic_test_holder_tr);
+                    m15.setImageResource(R.drawable.ic_test_holder);
+                    m16.setImageResource(R.drawable.ic_test_holder_tr);
+                    flag = 3;
+                }
+            });
+
+            mAns4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    m13.setImageResource(R.drawable.ic_test_holder_tr);
+                    m14.setImageResource(R.drawable.ic_test_holder_tr);
+                    m15.setImageResource(R.drawable.ic_test_holder_tr);
+                    m16.setImageResource(R.drawable.ic_test_holder);
+                    flag = 4;
+                }
+            });
+
+            ImageView mCheck;
+            mCheck = findViewById(R.id.check_button);
+            mCheck.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (flag==ran){
+                        mCheck.setImageResource(R.drawable.ic_correct_button);
+                    } else{
+                        mCheck.setImageResource(R.drawable.ic_error_button);
+                    }
+                }
+            });
+
         }
     }
 }
