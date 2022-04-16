@@ -21,6 +21,9 @@ import org.json.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 import org.w3c.dom.Text;
 
@@ -28,8 +31,10 @@ public class GameActivity extends AppCompatActivity {
     ImageView im;
     TextView tv;
     Integer count = 0;
+    Boolean isPlace = false;
+    Integer place = 3;
     ArrayList<String> merge = new ArrayList<String>();
-    String tat, rus, img;
+    String tat, rus, img,lrus,limg, ltat;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -52,6 +57,8 @@ public class GameActivity extends AppCompatActivity {
         }
 
         final String str_data = new String(buffer);
+
+        final String[][][] mergeList ={ { {"бумага", "бумага"}, {"книга"}, {"читать"}} , {{"бумага", "карандаш"}, {"тетрадь"}, {"писать"}}, {{"книга", "тетрадь"}, {"рюкзак"}, {"большой"}}, {{"человек", "рюкзак"}, {"школьник"}, {"умный"}}, {{"школьник", "школьник"}, {"учитель"}, {"учить"}}, {{"книга", "книга", "книга"}, {"библиотека"}, {"маленькая"}}, {{"книга", "ученик", "тетрадь"}, {"пятерка"}, {"получать"}}, {{"учитель", "школьник", "школьник"}, {"школа"}, {"большая"}}  };
 
         for (int i=1; i<=24; i++){
             try {
@@ -123,7 +130,36 @@ public class GameActivity extends AppCompatActivity {
             mMerge.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(GameActivity.this, String.valueOf(merge.size()), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(GameActivity.this, String.valueOf(merge.size()), Toast.LENGTH_SHORT).show();
+                    Collections.sort(merge);
+                    ArrayList<String> mergeTemp;
+                    for(int j = 0; j<mergeList.length;j++) {
+                        mergeTemp = new ArrayList<String>(Arrays.asList(mergeList[j][0]));
+                        Collections.sort(mergeTemp);
+                        if (mergeTemp.equals(merge)) {
+                            Toast.makeText(GameActivity.this, "Рецепт создан!", Toast.LENGTH_SHORT).show();
+                            for(int x = 1;x<24;x++) {
+                                try {
+                                    JSONObject obj = new JSONObject(str_data);
+                                    lrus = obj.getJSONObject(String.valueOf(x)).getString("rus");
+                                    if(!lrus.equals(mergeList[j][1][0]))
+                                        continue;
+                                    limg = obj.getJSONObject(String.valueOf(x)).getString("img");
+                                    ltat = obj.getJSONObject(String.valueOf(x)).getString("tatar");
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            if(place<=24)
+                                place++;
+                            ImageView tempim = findViewById(getResources().getIdentifier("im"+String.valueOf(place), "id",getPackageName()));
+                            TextView tempt = findViewById(getResources().getIdentifier("t"+String.valueOf(place), "id",getPackageName()));
+                            tempim.setVisibility(View.VISIBLE);
+                            tempim.setImageDrawable(ContextCompat.getDrawable(GameActivity.this,getResources().getIdentifier(limg, "drawable", getPackageName())));
+                            tempt.setText(ltat);
+                            break;
+                        }
+                    }
                 }
             });
 
