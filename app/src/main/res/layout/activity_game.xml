@@ -144,16 +144,16 @@
                             android:layout_height="70dp"
                             app:srcCompat="@drawable/ic_merge">
                         </ImageView>
+
                         <TextView
                             android:id="@+id/t1"
-                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Это слово"
+                            android:layout_height="5dp"
+                            android:layout_gravity="center"
                             android:layout_marginTop="8dp"
-                            android:textColor="#473305"
-                            android:fontFamily="@font/pixy">
-                        </TextView>
+                            android:fontFamily="@font/pixy"
+                            android:text="Это слово"
+                            android:textColor="#473305"></TextView>
 
                     </LinearLayout>
                     <LinearLayout
