@@ -2,6 +2,8 @@ package com.example.telek;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,12 +14,28 @@ import android.widget.TextView;
 
 import java.util.Random;
 
+interface OnBackPressedListener {
+    public void onBackPressed();
+}
+
 public class TestActivity extends AppCompatActivity {
 
 
     ImageView mA1, mA2, mA3, mA4;
     Integer current_question=1, flag = 0, correct=0;
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        int count = getSupportFragmentManager().getBackStackEntryCount();
 
+        if (count == 1) {
+            super.onBackPressed();
+            //additional code
+        } else {
+            getSupportFragmentManager().popBackStack();
+        }
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
