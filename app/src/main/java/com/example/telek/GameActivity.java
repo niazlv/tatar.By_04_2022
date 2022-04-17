@@ -191,7 +191,7 @@ public class GameActivity extends AppCompatActivity {
                     merge = new ArrayList<String>();
                 }
             });
-
+            //clear first slot by click him
             mHolder1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -256,6 +256,7 @@ public class GameActivity extends AppCompatActivity {
                                 builder.setView(mView);
                                 AlertDialog dialog = builder.create();
                                 dialog.getWindow().setBackgroundDrawableResource(R.color.translucent_black);
+                                dialog.setCanceledOnTouchOutside(false);
                                 dialog.show();
 
 
