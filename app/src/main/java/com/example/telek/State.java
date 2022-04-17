@@ -1,4 +1,4 @@
-package com.example.sberteacher;
+package com.example.telek;
 
 public class State {
     private String rus;

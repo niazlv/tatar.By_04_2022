@@ -1,4 +1,4 @@
-package com.example.sberteacher;
+package com.example.telek;
 
 import androidx.appcompat.app.AppCompatActivity;
 
