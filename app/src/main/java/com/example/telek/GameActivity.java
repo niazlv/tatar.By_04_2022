@@ -191,7 +191,7 @@ public class GameActivity extends AppCompatActivity {
                     merge = new ArrayList<String>();
                 }
             });
-            //clear first slot by click him
+            //clear first slot by click him 1
             mHolder1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -219,6 +219,39 @@ public class GameActivity extends AppCompatActivity {
                         count--;
                     }
                 }
+            });
+            //clear first slot by click him 2
+            mHolder2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                        if(count>1)
+                        {
+                            mHolder2.setImageResource(0);
+                            if(count>2) {
+                                merge.set(count-3,merge.get(count-2));
+                                mHolder2.setImageDrawable(mHolder3.getDrawable());
+                                mHolder3.setImageResource(0);
+                                merge.set(count-2,merge.get(count-1));
+                                merge.remove(count-1);
+                            }
+                            else {
+                                merge.set(count-2,merge.get(count-1));
+                                merge.remove(count - 1);
+                            }
+                            count--;
+                        }
+                    }
+            });
+            //clear first slot by click him 3
+            mHolder3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                        if(count>2) {
+                            mHolder3.setImageResource(0);
+                            merge.remove(count - 1);
+                            count--;
+                        }
+                    }
             });
 
             //merge button
