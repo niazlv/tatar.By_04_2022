@@ -43,7 +43,7 @@ public class TestActivity extends AppCompatActivity {
 
         //array with questions
         String[] images = {"ic_paper", "ic_student", "ic_school", "ic_book", "ic_workbook", "ic_human", "ic_backpack"};
-        String[] q = {"Мин _____ белән дәфтәрдә язам", "ул ____ белән рәсем ясый", "мәктәптә зур _________", "укучы _____ ала", "_______ язырга ойрэтэ"};
+        String[] q = {"Мин _____ белән дәфтәрдә язам", "ул ____ белән рәсем ясый", "мәктәптә зур _________", "укучы _____ ала", "_______ язырга өйрэтэ"};
         String[] a = {"ic_pencil", "ic_dye", "ic_library", "ic_5", "ic_teacher"};
 
         //elements
